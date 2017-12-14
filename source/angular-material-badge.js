@@ -25,10 +25,15 @@
             //
             var parent = element.parent();
             var badge = document.createElement('div');
-            var offset = parseInt(attributes.mdBadgeOffset);
-            if (isNaN(offset)) {
-               offset = 10;
+            var offsetLeft = parseInt(attributes.mdBadgeOffsetLeft);
+            if (isNaN(offsetLeft)) {
+               offsetLeft = 10;
             }
+            var offsetTop = parseInt(attributes.mdBadgeOffsetTop);
+            if (isNaN(offsetTop)) {
+               offsetTop = 10;
+            }
+            
             function style(where, color) {
                if (color) {
                   if (color.startsWith(':')) {
@@ -57,8 +62,8 @@
                badge.style.display = value ? 'initial' : 'none';
             });
             var position = function(value) {
-               badge.style.left = value.left + value.width - 20 + offset + 'px';
-               badge.style.top = value.top + value.height - 20 + offset + 'px';
+               badge.style.left = value.left + value.width - 20 + offsetLeft + 'px';
+               badge.style.top = value.top + value.height - 20 + offsetTop + 'px';
             }
             scope.$watch(function() {
                return {
