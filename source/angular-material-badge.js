@@ -64,7 +64,7 @@
             var position = function(value) {
                badge.style.left = value.left + value.width - 20 + offsetLeft + 'px';
                badge.style.top = value.top + value.height - 20 + offsetTop + 'px';
-            }
+            };
             scope.$watch(function() {
                return {
                   top: element.prop('offsetTop'),
@@ -86,7 +86,7 @@
                   height: element.prop('offsetHeight')
                });
             });
-         },
+         }
       };
    }]);
 })(window, window.angular, document);

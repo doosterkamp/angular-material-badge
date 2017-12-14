@@ -2,7 +2,7 @@
   "name": "angular-material-badge",
   "homepage": "https://github.com/ronb/angular-material-badge",
   "main": [
-     "./source/angular-material-badge.css",
-     "./source/angular-material-badge.js"
+     "./angular-material-badge.min.css",
+     "./angular-material-badge.min.js"
   ]
 }
