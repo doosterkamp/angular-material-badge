@@ -17,7 +17,7 @@
       };
    }]);
    
-   module.directive('mdBadge', ['$mdTheming', '$mdColors', '$timeout', '$window', function($mdTheming, $mdColors, $timeout, $window) {
+   module.directive('mdBadge', ['$mdTheming', '$mdColors', '$timeout', '$window', '$parse', function($mdTheming, $mdColors, $timeout, $window, $parse) {
       return {
          restrict: 'A',
          link: function(scope, element, attributes) {
@@ -48,17 +48,21 @@
             scope.$watch(function() {
                return attributes.mdBadgeColor;
             }, function(value){
-               style('color', value);
+               style('color', $parse(value)(scope));
             });
             scope.$watch(function() {
                return attributes.mdBadgeFill;
             }, function(value){
-               style('background-color', value);
+               style('background-color', $parse(value)(scope));
             });
             scope.$watch(function() {
                return attributes.mdBadge;
             }, function(value){
-               badge.textContent = value;
+                try {
+                    badge.textContent = $parse(value)(scope);
+                } catch(e) {
+                    badge.textContent = value;
+                }
                badge.style.display = value ? 'initial' : 'none';
             });
             var position = function(value) {
